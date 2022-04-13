@@ -14,7 +14,6 @@ router.post('/registration', async (req, res) => {
     req.session.user = addUser.name;
     req.session.userId = addUser.id;
     res.json(addUser);
-    res.render('main');
   } catch (err) {
     res.json(err);
     console.error(err);
