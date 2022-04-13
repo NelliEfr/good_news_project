@@ -28,27 +28,21 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
   console.log(req.body);
   try {
-    console.log('0');
-    const { name, password } = req.body;
+    const { email, password } = req.body;
     const loginUser = await User.findOne({
-      where: { name },
+      where: { email },
       raw: true,
     });
     let passwordCheck;
     if (loginUser !== null) {
       passwordCheck = await bcrypt.compare(password, loginUser.password);
-      console.log('1');
     }
     if (passwordCheck && loginUser !== null) {
-      req.session.user = loginUser.name;
+      req.session.user = loginUser.email;
       req.session.userId = loginUser.id;
       res.json(loginUser);
-      res.render('main');
-      res.redirect('main');
-      console.log('2');
     } else {
       res.json('errors');
-      console.log('3');
     }
   } catch (err) {
     console.log(err);

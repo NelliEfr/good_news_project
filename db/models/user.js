@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -14,40 +14,28 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
     name: {
-      type: DataTypes.TEXT
+      allowNull: false,
+      type: DataTypes.TEXT,
     },
     email: {
-      type: DataTypes.TEXT
+      allowNull: false,
+      unique: true,
+      type: DataTypes.TEXT,
     },
     password: {
-      type: DataTypes.TEXT
+      allowNull: false,
+      type: DataTypes.TEXT,
     },
     keyGood: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     keyBad: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
     sequelize,
     modelName: 'User',
-    tableName: 'Users',
-
   });
   return User;
 };
