@@ -1,7 +1,7 @@
-'use strict';
 const {
-  Model
+  Model,
 } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Post extends Model {
     /**
@@ -14,39 +14,24 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Post.init({
-    id: {
-      allowNull: false,
-      autoIncrement: true,
-      primaryKey: true,
-      type: DataTypes.INTEGER
-    },
     title: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     description: {
-      type: DataTypes.TEXT
+      type: DataTypes.TEXT,
     },
     link: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     img: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
     },
     date: {
-      type: DataTypes.DATE
+      type: DataTypes.DATE,
     },
-    createdAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      type: DataTypes.DATE
-    }
   }, {
     sequelize,
     modelName: 'Post',
-    tableName: 'Posts',
   });
   return Post;
 };

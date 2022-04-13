@@ -1,6 +1,4 @@
-const form = document.querySelector('.registrationForm');
-console.log(form);
-form.addEventListener('submit', async (event) => {
+document.registrationForm.addEventListener('submit', async (event) => {
   event.preventDefault();
   const { name, password, email } = event.target;
   const response = await fetch('/registration', {
@@ -15,8 +13,8 @@ form.addEventListener('submit', async (event) => {
     }),
   });
   const registrationResponse = await response.json();
-  console.log(registrationResponse);
-  if (registrationResponse.hasOwnProperty('errors')) {
+  window.location.assign('/');
+  if (registrationResponse === 'errors') {
     name.value = '';
     password.value = '';
     email.value = '';
