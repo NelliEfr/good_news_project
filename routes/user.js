@@ -37,7 +37,7 @@ router.post('/login', async (req, res) => {
       passwordCheck = await bcrypt.compare(password, loginUser.password);
     }
     if (passwordCheck && loginUser !== null) {
-      req.session.user = loginUser.email;
+      req.session.user = loginUser.name;
       req.session.userId = loginUser.id;
       res.json(loginUser);
     } else {
