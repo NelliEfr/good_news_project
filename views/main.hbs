@@ -1,1 +1,26 @@
-<h1>Работает</h1>
+<div class="mb-5">
+  <form name="buttons" method="POST" action="/">
+    <div class="mb-3" id="tegs"></div>
+  
+    <div class="mb-3">
+      <label class="form-label" for="key"></label>
+      <input type="text" name="keyword" class="form-control" id="key" />
+    </div>
+    <button type="submit" class="btn btn-primary" id="good">Добавить хороший ключ</button>
+    <button type="submit" class="btn btn-primary" id="bad">Добавить плохой ключ</button>
+  </form>
+</div>
+
+<div class="row">
+{{#each entries}}
+  <div class="col col-12 col-md-6 col-lg-4 mb-2 mb-md-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{this.title}}</h5>
+        <p class="card-text ">{{this.description}}</p>
+        <a href={{this.link}} class="btn btn-primary" >Открыть новость</a>
+      </div>
+    </div>
+  </div>
+{{/each}}
+</div>
