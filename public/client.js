@@ -9,8 +9,19 @@ document
       id: event.submitter.id,
     };
     if (buttonParams.id === 'good' && entryValue.value.length >= 1) {
-      console.log(entryValue.value)
-      button.innerHTML += `<button type="button" class="btn btn-success btn-sm">${entryValue.value}</button>`
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          key: entryValue.value,
+        }),
+      });
+    
+      const registrationResponse = await response.json();
+  
+      button.innerHTML += `<button type="button" class="btn btn-success btn-sm">${registrationResponse}</button>`
     }
     if (buttonParams.id === 'bad' && entryValue.value.length >= 1) {
       button.innerHTML += `<button type="button" class="btn btn-danger btn-sm">${entryValue.value}</button>`

@@ -22,3 +22,5 @@ document.loginForm.addEventListener('submit', async (event) => {
     window.location.assign('/');
   }
 });
+
+
